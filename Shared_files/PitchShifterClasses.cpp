@@ -8,7 +8,7 @@
 #include <lv2/lv2plug.in/ns/ext/buf-size/buf-size.h>
 #include <lv2/lv2plug.in/ns/ext/options/options.h>
 
-#define N_SAMPLES_DEFAULT 128
+#define N_SAMPLES_DEFAULT 256
 
 PSAnalysis::PSAnalysis(uint32_t n_samples, int nBuffers, const char* wisdomFile) //Construtor
 {
