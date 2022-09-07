@@ -3,8 +3,8 @@
 CXX ?= g++
 
 # flags
-CXXFLAGS += -Ofast -mcpu=cortex-a72 -mtune=cortex-a72 -mfpu=neon-fp-armv8 -ffast-math -Wall -fPIC -DPIC $(shell pkg-config --cflags fftw3f) -I. -I../Shared_files
-LDFLAGS += -shared -mcpu=cortex-a72 -mtune=cortex-a72 -mfpu=neon-fp-armv8 -Wl,-O1 -Wl,--as-needed -Wl,--no-undefined -Wl,--strip-all $(shell pkg-config --libs fftw3f) -larmadillo -lm
+CXXFLAGS += -Ofast -mcpu=cortex-a72 -mtune=cortex-a72 -ffast-math -Wall -fPIC -DPIC $(shell pkg-config --cflags fftw3f) -I. -I../Shared_files
+LDFLAGS += -shared -mcpu=cortex-a72 -mtune=cortex-a72 -Wl,-Ofast -Wl,--as-needed -Wl,--no-undefined -Wl,--strip-all $(shell pkg-config --libs fftw3f) -larmadillo -lm
 
 # remove command
 RM = rm -f
