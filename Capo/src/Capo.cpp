@@ -6,7 +6,7 @@
 /**********************************************************************************************************************************************************/
 
 #define PLUGIN_URI "http://moddevices.com/plugins/mod-devel/Capo"
-#define FIDELITY0 4,2,1,1
+#define FIDELITY0 6,3,2,1
 #define FIDELITY1 12,6,3,2
 #define FIDELITY2 20,10,5,3
 enum {IN, OUT, STEP, GAIN, FIDELITY, PLUGIN_PORT_COUNT};
@@ -77,7 +77,7 @@ public:
     static const void* extension_data(const char* uri);
     float *ports[PLUGIN_PORT_COUNT];
     
- 	PSAnalysis *obja;
+    PSAnalysis *obja;
     PSSinthesis *objs;
     GainClass *objg;
 
@@ -134,7 +134,7 @@ void Capo::connect_port(LV2_Handle instance, uint32_t port, void *data)
 {
     Capo *plugin;
     plugin = (Capo *) instance;
-    plugin->ports[port] = (float*) data;   
+    plugin->ports[port] = (float*) data;
 }
 
 /**********************************************************************************************************************************************************/
@@ -143,7 +143,7 @@ void Capo::run(LV2_Handle instance, uint32_t n_samples)
 {
     Capo *plugin;
     plugin = (Capo *) instance;
-    
+
     float *in       = plugin->ports[IN];
     float *out      = plugin->ports[OUT];
     double s        = (double)(*(plugin->ports[STEP]));
@@ -157,11 +157,11 @@ void Capo::run(LV2_Handle instance, uint32_t n_samples)
         memset(out,0,sizeof(float)*n_samples);
         return;
     }
-     
+
     (plugin->objg)->SetGaindB(gain);
     (plugin->obja)->PreAnalysis(plugin->nBuffers, in);
     (plugin->objs)->PreSinthesis();
-            
+
     if (plugin->cont < plugin->nBuffers-1)
         plugin->cont = plugin->cont + 1;
     else
